@@ -1,17 +1,20 @@
 {
     "name": "afrikpay/afrikpay-php-sdk",
+    "type": "library",
     "description": "Afrikpay Php Api Sdk",
-    "require": {
-        "php": ">=7.0.0",
-        "guzzlehttp/guzzle": "^7.2"
-    },
+    "keywords": ["payment","afrikpay"],
+    "homepage": "https://github.com/Georges-Ngandeu/AfrikpayPhpSdk",
+    "license": "MIT",
     "authors": [
         {
             "name": "georgesngandeu",
             "email": "georgesngandeu@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "^7.2"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
