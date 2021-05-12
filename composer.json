@@ -1,5 +1,6 @@
 {
     "name": "afrikpay/afrikpay-php-sdk",
+    "minimum-stability": "dev",
     "type": "library",
     "description": "Afrikpay Php Api Sdk",
     "keywords": ["payment","afrikpay"],
