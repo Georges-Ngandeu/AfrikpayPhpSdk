@@ -46,7 +46,7 @@ This node library was created with the purpose of facilitating the integration o
 ### Installation
 
    ```sh
-composer require afrikpay-tools/afrikpay-tools-php-sdk
+composer require afrikpay-tools/afrikpay-tools-php-sdk:dev-master
    ```
 <!-- USAGE EXAMPLES -->
 ## Usage
