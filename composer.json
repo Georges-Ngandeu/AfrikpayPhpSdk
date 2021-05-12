@@ -1,5 +1,5 @@
 {
-    "name": "afrikpay/afrikpay-php-sdk",
+    "name": "afrikpay-tools/afrikpay-tools-php-sdk",
     "minimum-stability": "dev",
     "type": "library",
     "description": "Afrikpay Php Api Sdk",
