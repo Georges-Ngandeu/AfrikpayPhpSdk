@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use App\Ecommerce;
 
-$start = microtime(true);
+//some example usage of the package
 
 //collect example
 // $ecommerce = new Ecommerce('AFC5308', 'b2b0c952269cd5c38903433759369ac7', '', 'http://34.86.5.170:8086/api/ecommerce/collect/');
@@ -22,8 +22,8 @@ $ecommerce->print_response($response);
 
 //payout example
 // $ecommerce = new Ecommerce('AFC5308', 'b2b0c952269cd5c38903433759369ac7', '5555');
-// $response = $ecommerce->payout('mtn_mobilemoney_cm', '673721051', 2200);
-// $ecommerce->print_response($response);
+// $response = $ecommerce->payout('mtn_mobilemoney_cm', '677777777', 150);
+// print_r($response);
 
 //balance deposit example
 // $ecommerce = new Ecommerce(
@@ -37,13 +37,9 @@ $ecommerce->print_response($response);
 //     'http://34.86.5.170:8086/api/ecommerce/transaction/status/'
 // );
 // $response = $ecommerce->deposit();
-// $ecommerce->print_response($response);
+// print_r($response);
 
 //transaction status example
 // $ecommerce = new Ecommerce('AFC5308', 'b2b0c952269cd5c38903433759369ac7', '5555');
 // $response = $ecommerce->transactionStatus('azerty');
-// $ecommerce->print_response($response);
-
-
-$time_elapsed_secs = microtime(true) - $start;
-echo($time_elapsed_secs);
+// print_r($response);
