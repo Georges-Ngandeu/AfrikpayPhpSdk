@@ -53,7 +53,7 @@ composer require afrikpay-tools/afrikpay-tools-php-sdk:dev-master
 
 Let's suppose you want to integrate ecommerce payments on you system. Here are some steps to to get the job done in the development environment. 
 ```
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use App\Ecommerce;
 
