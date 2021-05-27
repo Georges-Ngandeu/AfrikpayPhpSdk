@@ -25,11 +25,11 @@ class Bill {
     ){
         $this->agentId= $agentId;
         $this->agentPlatform = $agentPlatform;
+        $this->apiKey = $apiKey;
+        $this->agentPassword = md5($agentPassword);
         $this->billUrl = $billUrl;
-        $this->agentPassword = $agentPassword;
         $this->billAmountUrl = $billAmountUrl;
         $this->billStatusUrl = $billStatusUrl;
-        $this->apiKey = $apiKey;
     }
 
     public function __toString(){

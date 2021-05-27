@@ -126,6 +126,7 @@ class Ecommerce {
                     $purchaseRef,
                     $description
                 );
+                return $response;
                 break;
             case 'orange_money_cm':
                 $response = $this->makePayout(
@@ -135,6 +136,7 @@ class Ecommerce {
                     $purchaseRef,
                     $description
                 );
+                return $response;
                 break;
             case 'express_union_mobilemoney':
                 $response = $this->makePayout(
@@ -144,6 +146,7 @@ class Ecommerce {
                     $purchaseRef,
                     $description
                 );
+                return $response;
                 break;
             case 'afrikpay':
                 $response = $this->makePayout(
@@ -153,6 +156,7 @@ class Ecommerce {
                     $purchaseRef,
                     $description
                 );
+                return $response;
                 break;
             default:
                 echo "Provider must be correctly define";
@@ -160,25 +164,25 @@ class Ecommerce {
     }
 
     public function deposit(){
-        //$client = new \GuzzleHttp\Client();
-        //$hash = md5($this->store.$this->apiKey);
-        // $response = $client->request('POST', $this->depositUrl, [
-        //     'json' => [
-        //         'store'=> $this->store,
-        //         'hash' => $hash
-        //     ]
-        // ]);
-        
-        $guzzleClient = new \GuzzleHttp\Client();
-        $myGuzzleClient = new MyGuzzleClient($guzzleClient);
-        $httpRequestAdapter = new HttpRequestAdapter($myGuzzleClient);
+        $client = new \GuzzleHttp\Client();
         $hash = md5($this->store.$this->apiKey);
-        $response = $httpRequestAdapter->fireRequest('POST', $this->depositUrl, [
+        $response = $client->request('POST', $this->depositUrl, [
             'json' => [
                 'store'=> $this->store,
                 'hash' => $hash
             ]
         ]);
+        
+        // $guzzleClient = new \GuzzleHttp\Client();
+        // $myGuzzleClient = new MyGuzzleClient($guzzleClient);
+        // $httpRequestAdapter = new HttpRequestAdapter($myGuzzleClient);
+        // $hash = md5($this->store.$this->apiKey);
+        // $response = $httpRequestAdapter->fireRequest('POST', $this->depositUrl, [
+        //     'json' => [
+        //         'store'=> $this->store,
+        //         'hash' => $hash
+        //     ]
+        // ]);
 
         return $response;
     }

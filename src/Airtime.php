@@ -24,7 +24,7 @@ class Airtime {
         $this->agentId = $agentId;
         $this->agentPlatform = $agentPlatform;
         $this->apiKey = $apiKey;
-        $this->agentPassword = $agentPassword;
+        $this->agentPassword = md5($agentPassword);
         $this->airtimeUrl = $airtimeUrl;
         $this->airtimeStatusUrl = $airtimeStatusUrl;
     }

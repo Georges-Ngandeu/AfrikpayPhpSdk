@@ -28,7 +28,10 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li><a href="#getting">Getting started</a></li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Ecommerce integration</a></li>
+    <li><a href="#usage">Bill integration</a></li>
+    <li><a href="#usage">Airtime integration</a></li>
+    <li><a href="#usage">Account integration</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -49,48 +52,171 @@ This node library was created with the purpose of facilitating the integration o
 composer require afrikpay-tools/afrikpay-tools-php-sdk:dev-master
    ```
 <!-- USAGE EXAMPLES -->
-## Usage
+## Ecommerce integration
 
-Let's suppose you want to integrate ecommerce payments on you system. Here are some steps to to get the job done in the development environment. 
+Let's suppose you want to integrate ecommerce payments on you system. Here are the two main steps to get the job done in the development environment.
+You can uncomment the code to test the others apis. 
 ```
 require __DIR__.'/vendor/autoload.php';
 
 use App\Ecommerce;
 
-$ecommerce = new Ecommerce(
-    'AFC5308',
-    'b2b0c952269cd5c38903433759369ac7',
-    '',
-    'http://34.86.5.170:8086/api/ecommerce/collect/');
+//some example usage of the package
+
+/*********************ecommerce api examples****************/
+
+//collect example
+ $ecommerce = new Ecommerce(
+    'AFC6617',
+    '661671d0bd7bef499e7d80879c27d95e',
+    '7777',
+    'http://34.86.5.170:8086/api/ecommerce/collect/',
+    'http://34.86.5.170:8086/api/ecommerce/payout/',
+    'http://34.86.5.170:8086/api/ecommerce/deposit/',
+    'http://34.86.5.170:8086/api/ecommerce/changekey/',
+    'http://34.86.5.170:8086/api/ecommerce/transaction/status/'
+ );
 
 $response = $ecommerce->collect(
-    'mtn_mobilemoney_cm',
-    '677777777',
-    300);
-
+  'mtn_mobilemoney_cm',
+  '677777777',
+  400);
 $ecommerce->print_response($response);
-```
-By default the services are configure for production. For example, in production to make an ecommerce payment, you will write the above code. You can explore the src directory of the package to get the default values.
+
+// $response = $ecommerce->collect(
+//     'orange_money_cm',
+//     '699999999',
+//     400,
+//     '0000',
+//     '123azerty');
+// $ecommerce->print_response($response);
+
+//payout example
+// $response = $ecommerce->payout(
+//     'mtn_mobilemoney_cm',
+//     '677777777',
+//     300);
+// $ecommerce->print_response($response);
+
+// $response = $ecommerce->payout(
+//     'orange_money_cm',
+//     '699999999',
+//     500);
+// $ecommerce->print_response($response);
+
+//balance deposit example
+// $response = $ecommerce->deposit();
+// $ecommerce->print_response($response);
+
+//transaction status example
+// $response = $ecommerce->transactionStatus('123azerty');
+// $ecommerce->print_response($response);
+
+//ecommerce hash
+// $hash = $ecommerce->hash('ecommerce_collect');
+// print_r($hash);
 
 ```
-require __DIR__.'/../vendor/autoload.php';
-
-use App\Ecommerce;
-
-$ecommerce = new Ecommerce(
-    'AFC5308',
-    'b2b0c952269cd5c38903433759369ac7');
-
-$response = $ecommerce->collect(
-    'mtn_mobilemoney_cm',
-    '677777777',
-    300);
-
-$ecommerce->print_response($response);
+## Bill integration
+If you want to integrate bill payments apis on you system, here are the two main steps to get the job done in the development environment. You an uncomment the code to test the others apis.
 ```
+require __DIR__.'/vendor/autoload.php';
 
-_For more examples, please refer to the [Documentation](https://github.com/Georges-Ngandeu/AfrikpayNodeSdk)_.
-You can also explore the src directory of the package to see all the service available for each Afrikpay api product.
+use App\Bill;
+
+//bill example
+$bill = new Bill(
+  '3620724907638658',
+  '3620724907638658',
+  'e825e83873eafffff315fc3f22db2d59',
+  'afrikpay',
+  'http://34.86.5.170:8086/api/bill/v2/',
+  'http://34.86.5.170:8086/api/bill/getamount/',
+  'http://34.86.5.170:8086/api/bill/status/v2/'
+);
+
+$response = $bill->payBill(
+  'camwater',
+  '111111111111111',
+  2000,
+  'cash',
+  '16589'
+);
+$bill->print_response($response);
+
+// $response = $bill->payBill(
+//     'canal',
+//     '11111111111111',
+//     13500,
+//     'cash',
+//     '165899'
+// );
+// $bill->print_response($response);
+
+// $response = $bill->getBillAmount(
+//     'canal',
+//     '11111111111111'
+// );
+// $bill->print_response($response);
+
+// $response = $bill->getBillStatus(
+//     '165899'
+// );
+// $bill->print_response($response);
+```
+## Airtime integration
+If you want to integrate airtime apis on you system, here are the two main steps to get the job done in the development environment. You an uncomment the code to test the others apis.
+```
+require __DIR__.'/vendor/autoload.php';
+
+use App\Airtime;
+
+//airtime example
+$airtime = new Airtime(
+  '3620724907638658',
+  '3620724907638658',
+  'e825e83873eafffff315fc3f22db2d59',
+  'afrikpay',
+  'http://34.86.5.170:8086/api/airtime/v2/',
+  'http://34.86.5.170:8086/api/airtime/status/v2/'
+);
+
+//airtime status
+$response = $airtime->makeAirtime(
+  'mtn',
+  '677777777',
+  1000,
+  'cash',
+  'xyz123'
+);
+$airtime->print_response($response);
+
+// $response = $airtime->airtimeStatus(
+//     'xyz123'
+// );
+// $airtime->print_response($response);
+```
+## Account integration
+If you want to integrate account apis on you system, here are the two main steps to get the job done in the development environment. You an uncomment the code to test the others apis.
+```
+require __DIR__.'/vendor/autoload.php';
+
+use App\Account;
+
+$account = new Account(
+  '3620724907638658',
+  '3620724907638658',
+  'e825e83873eafffff315fc3f22db2d59',
+  'http://34.86.5.170:8086/api/account/agent/balance/v2/',
+  'http://34.86.5.170:8086/api/account/agent/balance/v2/',
+  'http://34.86.5.170:8086/api/account/developer/changekey/'
+);
+
+$response = $account->balance();
+$account->print_response($response);
+```
+## How to switch to production ?
+You can explore the src folder to see the default production setup. Just use the appropriate apikey, store code, agentid for production. If you have any problem using the library please contact us, we will be happy to help you. 
 <!-- LICENSE -->
 ## License
 
